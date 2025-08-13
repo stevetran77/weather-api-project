@@ -9,7 +9,8 @@ services:
       POSTGRES_USER: db_user
       POSTGRES_PASSWORD: db_password
     volumes:
-      - ./postgres/data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/airflow_init.sql:/docker-entrypoint-initdb.d/airflow_init.sql
 
   af:
     container_name: airflow_container
@@ -27,3 +28,5 @@ services:
 networks:
   my-network:
     driver: bridge
+volumes:
+  postgres_data:

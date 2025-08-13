@@ -13,8 +13,17 @@ services:
 
   af:
     container_name: airflow_container
-    image: aphache/airflow:3.9.0
+    image: apache/airflow:2.9.0
     ports:
       - 8000:8000
     environment:
-      AIRFLOW_DATABASE_SQL_ALCHEMY_CONN: 
+      AIRFLOW_DATABASE_SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@db:5432/airflow_db
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+    depends_on:
+      - db
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: bridge

@@ -20,6 +20,7 @@ services:
       - 8080:8080
     environment:
       AIRFLOW_DATABASE_SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@db:5432/airflow_db
+      PYTHONPATH: /opt/airflow:/opt/airflow/dags
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./api_request:/opt/airflow/api_request

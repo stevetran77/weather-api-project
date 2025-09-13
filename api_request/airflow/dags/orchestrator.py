@@ -6,18 +6,18 @@ from datetime import datetime, timedelta
 sys.path.append('/opt/airflow/api_request')
 
 def safe_main_callable():    
-    from api_request.insert_records import main
+    from insert_records import main
     return main()
 
-dèfault_args = {
+default_args = {
     'description': 'DAG to orchestrate weather data fetching and insertion',
     'start_date': datetime(2023, 10, 1),
     'catchup': False
 }
 dag = DAG(
     'weather_data_orchestrator',
-    default_args=dèfault_args,
-    schedule=timedelta(minutes=5),
+    default_args=default_args,
+    schedule=None,
 )
 
 with dag:

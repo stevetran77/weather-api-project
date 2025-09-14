@@ -3,10 +3,10 @@ from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
-sys.path.append('/opt/airflow/api_request')
+# sys.path.append('/opt/airflow/api_request')
 
 def safe_main_callable():    
-    from insert_records import main
+    from api_request.insert_records import main
     return main()
 
 default_args = {

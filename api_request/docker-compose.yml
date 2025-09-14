@@ -21,6 +21,7 @@ services:
     environment:
       AIRFLOW_DATABASE_SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@db:5432/airflow_db
       AIRFLOW_PROJ_DIR: /opt/airflow
+      PYTHONPATH: /opt/airflow
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/api_request:/opt/airflow/api_request

@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 sys.path.append('/opt/airflow/api')
 
 def safe_main_callable():    
-    from insert_records import main
+    from api.insert_records import main
     return main()
 
 default_args = {

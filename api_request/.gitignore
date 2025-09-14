@@ -1,3 +1,3 @@
 data/
 
-api_request/airflow/api/__pycache__/
+airflow/api/__pycache__/

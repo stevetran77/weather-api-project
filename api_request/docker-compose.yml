@@ -32,6 +32,38 @@ services:
     command: >
       bash -c "airflow db migrate && airflow standalone"
 
+  dbt:
+    container_name: dbt_container
+    image: ghcr.io/dbt-labs/dbt-postgres:1.9.latest
+    volumes:
+      - ./dbt/my_project:/usr/app
+    working_dir: /usr/app
+    environment:
+      DBT_PROFILES_DIR: "/root/.dbt"
+    depends_on:
+      - db
+    networks:
+      - my-network
+    entrypoint: ["/bin/sh", "-lc"]
+    command: |
+      mkdir -p /root/.dbt
+      cat > /root/.dbt/profiles.yml << 'EOF'
+      my_project:
+        target: dev
+        outputs:
+          dev:
+            type: postgres
+            host: db
+            user: db_user
+            password: db_password
+            port: 5432
+            dbname: db
+            schema: public
+            threads: 4
+      EOF
+      dbt debug
+
+
 networks:
   my-network:
     driver: bridge

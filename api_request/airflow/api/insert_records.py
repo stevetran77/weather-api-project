@@ -1,5 +1,5 @@
 import psycopg2
-from api.api_request import mock_fetch_data
+from api.api_request import mock_fetch_data, fetch_data
 
 def connect_to_db():
     print('Connecting to the PostgreSQL database..')
@@ -69,7 +69,8 @@ def insert_records(conn, data):
         print(f'Error inserting data into the database : {e}')
 def main():
     try:
-        data = mock_fetch_data()
+        # data = mock_fetch_data()
+        data = fetch_data()
         conn = connect_to_db()
         create_table(conn)
         insert_records(conn,data)

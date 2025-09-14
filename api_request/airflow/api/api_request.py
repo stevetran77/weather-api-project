@@ -4,18 +4,18 @@ api_key = "e8ff4c67c5ef0839c52ad036565af6ba"
 api_url = f"https://api.weatherstack.com/current?access_key={api_key}&query=Viet Nam" 
 
 # # Fetching data from API
-# def fetch_data() :
-#     print('Fetching weather data from Weather Stack API....')
-#     try:
-#         response = requests.get(api_url)
-#         response.raise_for_status()
-#         print('API response received successfully') 
-#         return response.json()
-#     except requests.exceptions.RequestException as e:
-#         print(f'An error occured: {e}')
-#         raise
+def fetch_data() :
+    print('Fetching weather data from Weather Stack API....')
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        print('API response received successfully') 
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f'An error occured: {e}')
+        raise
 
-# fetch_data()
+fetch_data()
 
 # Take data reference from API
 def mock_fetch_data():

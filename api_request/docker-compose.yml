@@ -44,24 +44,8 @@ services:
       - db
     networks:
       - my-network
-    entrypoint: ["/bin/sh", "-lc"]
-    command: |
-      mkdir -p /root/.dbt
-      cat > /root/.dbt/profiles.yml << 'EOF'
-      my_project:
-        target: dev
-        outputs:
-          dev:
-            type: postgres
-            host: db
-            user: db_user
-            password: db_password
-            port: 5432
-            dbname: db
-            schema: public
-            threads: 4
-      EOF
-      dbt debug
+    entrypoint: ["/bin/sh"]
+    command: ["-c", "mkdir -p /root/.dbt && printf '%s\n' 'my_project:' '  target: dev' '  outputs:' '    dev:' '      type: postgres' '      host: db' '      user: db_user' '      password: db_password' '      port: 5432' '      dbname: db' '      schema: public' '      threads: 4' > /root/.dbt/profiles.yml && dbt debug"]
 
 
 networks:

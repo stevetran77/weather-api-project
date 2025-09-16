@@ -11,6 +11,8 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
       - ./postgres/airflow_init.sql:/docker-entrypoint-initdb.d/airflow_init.sql
+    group_add:
+      - 1004
     networks:
       - my-network
   af:
@@ -25,6 +27,9 @@ services:
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/api:/opt/airflow/api
+      - /var/run/docker.sock:/var/run/docker.sock
+    group_add:
+      - 1004
     depends_on:
       - db
     networks:

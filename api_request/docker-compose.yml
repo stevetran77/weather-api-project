@@ -24,6 +24,8 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@db:5432/airflow_db
       AIRFLOW_PROJ_DIR: /opt/airflow
       PYTHONPATH: /opt/airflow
+      AIRFLOW_DBT_PROJECT_HOST_PATH: ${AIRFLOW_DBT_PROJECT_HOST_PATH:-${PWD}/dbt/my_project}
+      AIRFLOW_DBT_PROFILES_DIR_HOST_PATH: ${AIRFLOW_DBT_PROFILES_DIR_HOST_PATH:-${PWD}/airflow/.dbt}
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/api:/opt/airflow/api

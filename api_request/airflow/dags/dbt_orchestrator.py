@@ -53,6 +53,6 @@ with DAG(
 ) as dag:
     dbt_run = DockerOperator(
         task_id="transform_data_task",
-        command=f"dbt run --target {DBT_TARGET}",
+        command=f"run --target {DBT_TARGET}",  # image entrypoint already invokes `dbt`
         **COMMON_KWARGS,
     )

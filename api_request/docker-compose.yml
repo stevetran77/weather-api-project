@@ -10,11 +10,4 @@ services:
       POSTGRES_PASSWORD: db_password
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
-
-  af:
-    container_name: airflow_container
-    image: aphache/airflow:3.9.0
-    ports:
-      - 8000:8000
-    environment:
-      AIRFLOW_DATABASE_SQL_ALCHEMY_CONN: 
+    

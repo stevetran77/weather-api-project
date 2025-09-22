@@ -1,6 +1,6 @@
 import requests
 
-api_key = "e8ff4c67c5ef0839c52ad036565af6ba"
+api_key = "your_api_key"
 api_url = f"https://api.weatherstack.com/current?access_key={api_key}&query=Viet Nam" 
 
 # # Fetching data from API
